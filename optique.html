@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+      <link rel="stylesheet" href="assets/css/styles.css"> 
+      <link rel="stylesheet" href="stylesop.css"> 
+   
+    <title>Document</title>
+</head>
+<body>
+     <header class="header">
+        <nav class="nav container">
+            <div class="nav__data">
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li>
+                        <a href="home.html" class="nav__link">Home</a>
+                    </li>
+                    <li class="dropdown__item">                      
+                        <div class="nav__link dropdown__button">
+                            Products <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+                        <div class="dropdown__container">
+                            <div class="dropdown__content">
+                                <div class="dropdown__group">
+                                    <div class="dropdown__icon">
+                                        <i class="ri-shape-2-line"></i>
+                                    </div>
+                                    
+                                    <span class="dropdown__title">styles</span>
+
+                                    <ul class="dropdown__list">
+                                        <li>
+                                            <a href="#" class="dropdown__link">ronde</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown__link">carre</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown__link">ovale</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="dropdown__group">
+                                    <div class="dropdown__icon">
+                                        <i class="ri-palette-line"></i>
+                                    </div>
+
+                                    <span class="dropdown__title">color</span>
+
+                                    <ul class="dropdown__list">
+                                        <li>
+                                            <a href="#" class="dropdown__link">noir</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown__link">marron</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown__link">blanc </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="dropdown__group">
+                                    <div class="dropdown__icon">
+                                        <i class="ri-user-3-line"></i>
+                                    </div>
+
+                                    <span class="dropdown__title">sex</span>
+
+                                    <ul class="dropdown__list">
+                                        <li>
+                                            <a href="#" class="dropdown__link">homme </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown__link">femme</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown__link">enfant</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown__item">
+                        <div class="nav__link dropdown__button">
+                            compte <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+
+                        <div class="dropdown__container">
+                            <div class="dropdown__content">
+                                <div class="dropdown__group">
+                                    <div class="dropdown__icon">
+                                        <i class="ri-account-circle-line"></i>
+                                    </div>
+                                    <span class="dropdown__title">votre compte</span>
+
+                                    <ul class="dropdown__list">
+                                        <li>
+                                            <a href="#" class="dropdown__link">connexion</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown__link">incription</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown__item">
+                        <div class="nav__link dropdown__button">
+                            pannier <i class="ri-shopping-bag-line"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+       
+    
+        <section class="bests-items" id="bests-items">
+            <h2 class="section-title">
+                Nos meilleures ventes
+            </h2>
+            <div class="best-plants">
+                    <a href="" class="style-box style1 no-grid">
+                        <div class="style-details">
+                            <p class="style-name">Style 1</p>
+                            <p class="style-price">240 MAD</p>
+                            <form action="panier.php" method="POST">
+                                <input type="submit" name="ok" value="Ajouter">
+                                <input type="hidden" name="idp" value="1"> 
+                                <input type="hidden" name="name" value="Style 1">
+                                <input type="hidden" name="price" value="240 MAD">
+                            </form>
+                        </div>
+                    </a>
+                <a  href="" class="style-box style2 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style2</p>
+                        <p class="style-price">350 MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 2">
+                            <input type="hidden" name="price" value="240 MAD">
+                        </form>
+                    </div>
+                </a>
+                <a  href="" class="style-box style3 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style3 </p>
+                        <p class="style-price">350MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 3">
+                            <input type="hidden" name="price" value="350 MAD">
+                        </form>
+                    </div>
+                </a>
+                <a   href="" class="style-box style4 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style4</p>
+                        <p class="style-price">150MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 4">
+                            <input type="hidden" name="price" value="150 MAD">
+                        </form>
+                    </div>
+                </a>
+            </div>
+        </section> 
+    
+        <section class="bests-items" id="bests-items">
+            
+            <div class="best-plants">
+                <a   href="" class="style-box style5 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style5</p>
+                        <p class="style-price">240 MAD</p><form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 5">
+                            <input type="hidden" name="price" value="240 MAD">
+                        </form>
+                    </div>
+                </a>
+                <a  href="" class="style-box style6 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style6</p>
+                        <p class="style-price">350 MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 6">
+                            <input type="hidden" name="price" value="350 MAD">
+                        </form>
+                    </div>
+                </a>
+                <a  href="" class="style-box style7 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style7 </p>
+                        <p class="style-price">350MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 7">
+                            <input type="hidden" name="price" value="350 MAD">
+                        </form>
+                    </div>
+                </a>
+                <a  href="" class="style-box style8 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style8</p>
+                        <p class="style-price">150MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 8">
+                            <input type="hidden" name="price" value="150 MAD">
+                        </form>
+                    </div>
+                </a>
+            </div>
+        </section> 
+    
+        <section class="bests-items" id="bests-items">
+            
+            <div class="best-plants">
+                <a  href="" class="style-box style9 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style9</p>
+                        <p class="style-price">240 MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 9">
+                            <input type="hidden" name="price" value="240 MAD">
+                        </form>
+                    </div>
+                </a>
+                <a  href="" class="style-box style10 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style10</p>
+                        <p class="style-price">350 MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 10">
+                            <input type="hidden" name="price" value="350 MAD">
+                        </form>
+                    </div>
+                </a>
+                <a  href="" class="style-box style11 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style11 </p>
+                        <p class="style-price">350MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 11">
+                            <input type="hidden" name="price" value="350 MAD">
+                        </form>
+                    </div>
+                </a>
+                <a  href="" class="style-box style12 no-grid">
+                    <div class="style-details">
+                        <p class="style-name">style12</p>
+                        <p class="style-price">150MAD</p>
+                        <form action="panier.php" method="POST">
+                            <input type="submit" name="ok" value="Ajouter">
+                            <input type="hidden" name="idp" value="1"> 
+                            <input type="hidden" name="name" value="Style 12">
+                            <input type="hidden" name="price" value="150 MAD">
+                        </form>
+                    </div>
+                </a>
+            </div>
+        </section> 
+    
+        
+</body>
+</html>

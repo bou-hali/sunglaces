@@ -1,0 +1,124 @@
+.sections {
+  display: flex;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0rem 0rem 1rem 0rem;
+}
+
+.section {
+  padding: 1rem;
+}
+
+.product-images {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-images img {
+  width: 48%;
+  object-fit: cover;
+}
+
+.count:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+.poem {
+  position: relative;
+  height: max-content;
+}
+
+.poem-text {
+  text-align: center;
+  font-size: 3vw;
+  padding: 1rem;
+}
+
+.text-box {
+  padding: 1rem;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.text-box p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.first-img {
+  width: 45vw;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
+  padding: 1rem;
+}
+
+.big-images {
+  display: flex;
+  flex-direction: column;
+}
+
+.extra-img {
+  display: block;
+}
+
+.small-img {
+  width: 16vw;
+  object-fit: cover;
+  object-position: center;
+  padding: 0.5rem 0rem;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+.small-img:hover {
+  transform: scale(1.05);
+}
+
+.image-section {
+  display: flex;
+  justify-content: center;
+}
+
+.image-collection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: fit-content;
+  padding: 0.5rem 1rem 0.5rem 0rem
+}
+
+.image-collection p {
+  transform: rotate(-90deg) translate(-100%, 0);
+}
+
+.product-paragraph {
+  padding: 1rem 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-top: 1px solid rgb(0, 0, 0);
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.product-paragraph h5 {
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+.product-image {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.product-image:hover {
+  filter: blur(3px);
+  cursor: pointer;
+}

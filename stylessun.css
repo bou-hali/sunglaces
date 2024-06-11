@@ -1,0 +1,239 @@
+.section-title {
+    font-size: 50px;
+    font-family: 'Kumbh Sans', sans-serif;
+    font-weight: 90;
+    color:hsl(219, 9%, 45%);
+    margin-bottom: 2%;
+    font-weight: 700;
+    margin-right: 10rem;
+     position: relative;
+     line-height: 25.6px;
+} 
+
+ 
+
+.bests-items {
+    margin: 50px 100px 50px 100px;
+}
+
+.best-plants {
+    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.style-box {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    margin-left: 1rem;
+    margin-bottom: -2rem;
+}
+
+.no-grid {
+    min-width: 50px;
+    height: 500px;
+    flex: 1;
+}
+
+.style1 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style1:hover {
+    animation: changeBackground 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style2 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground2 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style2:hover {
+    animation: changeBackground2 3s infinite; /* Change '3s' to adjust animation duration */
+}
+
+.style3 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground3 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style3:hover {
+    animation: changeBackground3 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style4 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground4 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style4:hover {
+    animation: changeBackground4 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style5 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground5 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style5:hover {
+    animation: changeBackground5 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style6 {
+    background-image:url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground6 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}.style6:hover {
+    animation: changeBackground6 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style7 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground7 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style7:hover {
+    animation: changeBackground7 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style8 {
+    background-image:url(74d30f180108c83db65637b1db424b02.jpg);
+}@keyframes changeBackground8 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style8:hover {
+    animation: changeBackground8 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style9 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground9 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style9:hover {
+    animation: changeBackground9 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style10 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground10 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style10:hover {
+    animation: changeBackground10 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style11 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground11 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style11:hover {
+    animation: changeBackground11 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style12 {
+    background-image: url(74d30f180108c83db65637b1db424b02.jpg);
+}
+@keyframes changeBackground12 {
+    0% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+    33% { background-image: url(be176a315e20845316ead9cd12a41148.jpg); }
+    66% { background-image: url(fa98bdba85e85bc39e7c50a40e68315e.jpg); }
+    100% { background-image: url(74d30f180108c83db65637b1db424b02.jpg); }
+}
+.style12:hover {
+    animation: changeBackground12 3s infinite; /* Change '3s' to adjust animation duration */
+}
+.style-details {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #FFFFFFDF;
+    padding: 5px 20px;
+    display: flex; /* Ajout de flexbox */
+    justify-content: space-between; /* Espace entre les éléments */
+    align-items: center; /* Aligne verticalement les éléments au centre */
+}
+
+.style-name {
+    font-size: 22px;
+    font-weight: 500; /* Correction de la valeur de font-weight */
+    margin-right: 10px; /* Ajout d'un espace entre le nom et le prix */
+}
+
+.style-price {
+    color: #ADD981;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* nos plantes */
+
+.all-plants {
+    margin: 100px;
+}
+
+
+.style-grid {
+    display: grid;
+    min-height: 150vh;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 400px); /* Hauteur ajustée pour chaque rangée */
+    gap: 10px; /* Ajout d'un espacement entre les éléments de la grille */
+}
+a {
+    text-decoration: none;
+  }
+ /* Style the submit button */
+input[type="submit"] {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+}
+
+/* Change button color on hover */
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green */
+}
+ 
+
+/* pied de page */

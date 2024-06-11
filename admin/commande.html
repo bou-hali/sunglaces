@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="stylec.css">
+    <title>Admin - To-Do List</title>
+</head>
+<body>
+
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bx-user'></i>
+            <span class="text">nameadmine</span>
+        </a>
+        <div style="display: flex ; flex-direction: column; justify-content: space-between; height: 90%;">
+            <ul class="side-menu top">
+                <li>
+                    <a href="index.html">
+                        <i class='bx bxs-dashboard'></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="commande.html" class="nav-link1">
+                        <i class='bx bxs-truck'></i>
+                        <span class="text">Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="analytics.html" >
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                        <span class="text">Analytics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class='bx bxs-shopping-bag'></i>
+                        <span class="text">Purchases</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="side-menu">
+                <li>
+                    <a href="#" class="logout">
+                        <i class='bx bxs-log-out-circle'></i>
+                        <span class="text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+            <a href="#" class="nav-link">Categories</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" name="search" aria-label="Search">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+        </nav>
+
+        <main>
+            
+            </div>
+            <div id="orders" class="content-section">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Orders</h1>
+                        <ul class="breadcrumb">
+                            <li>
+                                <a href="#">Orders</a>
+                            </li>
+                            <li><i class='bx bx-chevron-right'></i></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3> Orders</h3>
+                            <form id="user-search-form" action="#">
+                                <div class="form-input">
+                                    <input type="search" name="search" aria-label="Search" placeholder="Search" class="search-input">
+                                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Date Order</th>
+                                    <th>quantite</th>
+                                    <th>prix</th>
+                                    <th>adress</th>
+                                    <th>produit</th>
+                                    <th>Status</th>
+                                    
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr id="order-12346">
+                                    <td><p>Ali</p></td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td><button class="btn btn-success btn-confirm" data-order-id="12346"><span class="status completed">Comfirm</span></button> <button class="btn btn-danger btn-delete" data-order-id="12346"><span class="status canceled">canceled</span></button> <a href="detaill.html?idp=data-order-id"><button  class="btn" data-order-id="12346"><span class="status consulte">consulter</span></button></a></td> 
+                                </tr>
+                                <tr id="order-12347">
+                                    <td><p>Ali</p></td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td><button class="btn btn-success btn-confirm" data-order-id="12347"><span class="status completed">Comfirm</span></button> <button class="btn btn-danger btn-delete" data-order-id="12347"><span class="status canceled">canceled</span></button>
+                                     <a href="detaill.html?idp=data-order-id"><button  class="btn" data-order-id="12346"><span class="status consulte">consulter</span></button></a></td> 
+                                    
+                                </tr>
+                                <tr id="order-12348">
+                                    <td><p>Ali</p></td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td><button class="btn btn-success btn-confirm" data-order-id="12348"><span class="status completed">Comfirm</span></button>
+                                    <button class="btn btn-danger btn-delete" data-order-id="12348"><span class="status canceled">canceled</span></button>
+                                    <a href="detaill.html?idp=data-order-id"><button  class="btn" data-order-id="12346"><span class="status consulte">consulter</span></button></a></td>
+                                </tr>
+                                <tr id="order-12349">
+                                    <td><p>Ali</p></td>
+                                    <td>01-06-2024</td>  
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td ><button class="btn btn-success btn-confirm" data-order-id="12349"><span class="status completed">Comfirm</span></button>
+                                    <button class="btn btn-danger btn-delete" data-order-id="12349"><span class="status canceled">canceled</span></button>
+                                    <a href="detaill.html?idp=data-order-id"><button  class="btn" data-order-id="12346"><span class="status consulte">consulter</span></button></a></td>
+                                </tr>
+                                <tr id="order-12350">
+                                    <td><p>Ali</p></td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td><button class="btn btn-success btn-confirm" data-order-id="12350"><span class="status completed">Comfirm</span></button>
+                                <button class="btn btn-danger btn-delete" data-order-id="12350"><span class="status canceled">canceled</span></button>
+                                 <a href="detaill.html?idp=data-order-id"><button  class="btn" data-order-id="12346"><span class="status consulte">consulter</span></button></a></td>
+                                </tr>
+                                <tr id="order-12351">
+                                    <td><p>Ali</p></td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td><button class="btn btn-success btn-confirm" data-order-id="12351"><span class="status completed">Comfirm</span></button>
+                                    <button class="btn btn-danger btn-delete" data-order-id="12351"><span class="status canceled">canceled</span></button>
+                                     <a href="detaill.html?idp=data-order-id"><button  class="btn" data-order-id="12346"><span class="status consulte">consulter</span></button></a></td>
+                                </tr>
+                                <tr id="order-12352">
+                                    <td><p>Ali</p></td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td><button class="btn btn-success btn-confirm" data-order-id="12352"><span class="status completed">Comfirm</span></button>
+                                    <button class="btn btn-danger btn-delete" data-order-id="12352"><span class="status canceled">canceled</span></button>
+                                    <a href="detaill.html?idp=data-order-id"><button  class="btn" data-order-id="12346"><span class="status consulte">consulter</span></button></a></td>
+                                </tr>
+                                <tr id="order-12353">
+                                    <td><p>Ali</p></td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td>01-06-2024</td>
+                                    <td><button class="btn btn-success btn-confirm" data-order-id="12353"><span class="status completed">Comfirm</span></button> 
+                                    <button class="btn btn-danger btn-delete" data-order-id="12353"><span class="status canceled">canceled</span></button>
+                                     <a href="detaill.html?idp=data-order-id"><button  class="btn" data-order-id="12346"><span class="status consulte">consulter</span></button></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+    <script src="script.js"></script>
+</body>
+</html>

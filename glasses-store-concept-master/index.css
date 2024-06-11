@@ -1,0 +1,20 @@
+@import './stylesheets/reset.css';
+@import './stylesheets/fonts.css';
+@import './stylesheets/banner.css';
+@import './stylesheets/navbar.css';
+@import './stylesheets/section.css';
+@import './stylesheets/footer.css';
+@import './stylesheets/media.css';
+
+body {
+  margin: 0;
+  font-family: Poppins, sans-serif;
+  scrollbar-width: none;
+  -moz-scrollbar-width: none;
+  -webkit-scrollbar-width: none;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
