@@ -1,11 +1,11 @@
 /*=============== GOOGLE FONTS ===============*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 @import 'stylesheets/reset.css';
-
 @import 'stylesheets/banner.css';
 @import 'stylesheets/navbar.css';
 @import 'stylesheets/section.css';
 @import 'stylesheets/media.css';
+
 nav .cartDiv {
   position: relative;
 }

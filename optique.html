@@ -11,16 +11,18 @@
     <title>Document</title>
 </head>
 <body>
-     <header class="header">
+    <header class="header">
         <nav class="nav container">
-            <div class="nav__data">
+            <div class="nav__data" style="margin-top: 1%; font-size: 300%;">
+                <img src="Sans titre - 1.png" style="width: 5rem; height: 2rem; margin-top: 2%; margin-right: 1%;">
+                OptiTrend
             </div>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li>
                         <a href="home.html" class="nav__link">Home</a>
                     </li>
-                    <li class="dropdown__item">                      
+                    <li class="dropdown__item">
                         <div class="nav__link dropdown__button">
                             Products <i class="ri-arrow-down-s-line dropdown__arrow"></i>
                         </div>
@@ -30,7 +32,7 @@
                                     <div class="dropdown__icon">
                                         <i class="ri-shape-2-line"></i>
                                     </div>
-                                    
+
                                     <span class="dropdown__title">styles</span>
 
                                     <ul class="dropdown__list">
@@ -83,44 +85,28 @@
                                         <li>
                                             <a href="#" class="dropdown__link">enfant</a>
                                         </li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
+
                     <li class="dropdown__item">
-                        <div class="nav__link dropdown__button">
-                            compte <i class="ri-arrow-down-s-line dropdown__arrow"></i>
-                        </div>
-
-                        <div class="dropdown__container">
-                            <div class="dropdown__content">
-                                <div class="dropdown__group">
-                                    <div class="dropdown__icon">
-                                        <i class="ri-account-circle-line"></i>
-                                    </div>
-                                    <span class="dropdown__title">votre compte</span>
-
-                                    <ul class="dropdown__list">
-                                        <li>
-                                            <a href="#" class="dropdown__link">connexion</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="dropdown__link">incription</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
+                        <div class="cartDiv empty" id="cartDiv" style="margin-top: 33px; margin-right: 20px;">
+                            <img src="icon-cart.svg" class="icon" id="cartIcon"><div class="cart-box hide" id="cart-box">
+                            <div class="heading">
+                              <span>Cart</span>
                             </div>
-                        </div>
+                            <div class="products" id="products">
+                            </div>
+                            <div class="checkout" id="checkout">
+                             <a href="panier.html"> <button>Checkout</button></a>
+                            </div>
+                          </div>
                     </li>
-
-                    <li class="dropdown__item">
-                        <div class="nav__link dropdown__button">
-                            pannier <i class="ri-shopping-bag-line"></i>
-                        </div>
-                    </li>
+                          </div>
+                          
                 </ul>
             </div>
         </nav>
