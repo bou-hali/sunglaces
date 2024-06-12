@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    
-      <link rel="stylesheet" href="assets/css/styles.css"> 
-      <link rel="stylesheet" href="stylesop.css"> 
-   
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="assets/css/styles.css"> 
+    <link rel="stylesheet" href="stylesop.css"> 
     <title>Document</title>
+    <style>
+        .entete {
+          background-image: url('femme-beret-pull-col-roule_273609-4306.jpg'); 
+          background-size: cover; 
+          background-repeat: no-repeat; 
+          background-position: center; 
+          margin: 90px 0 0 20px; 
+          height: 40rem; 
+          transition: all 0.5s ease-in-out;
+        }
+      
+        .entete.scrolled {
+          margin: 50px 0 0 10px; 
+          height: 30rem; 
+        }
+        
+        .content {
+          height: 2000px;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -113,7 +132,7 @@
     </header>
     
        
-    
+    <div class="entete" id="entete"></div>
         <section class="bests-items" id="bests-items">
             <h2 class="section-title">
                 Nos meilleures ventes
@@ -276,7 +295,65 @@
                 </a>
             </div>
         </section> 
-    
-        
+        <footer class="footer">
+            <div class="container">
+                <div class="row3">
+                    <div class="footer-col">
+                    <h4 style="text-align: left; padding-left: 0; font-size: 5rem; margin-left: 2px;margin-bottom: 5%;">OptiTrend</h4> 
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 style="text-align: left; padding-left: 0; margin-bottom: 9%;">company</h4>
+                        <ul>
+                            <li><a href="#">about us</a></li>
+                            <li><a href="#">privacy policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 style="text-align: left; padding-left: 0;margin-bottom: 9%;">get help</h4>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">shipping</a></li>
+                            <li><a href="#">returns</a></li>
+                            <li><a href="#">payment options</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 style="text-align: left; padding-left: 0;margin-bottom: 9%;">online shop</h4>
+                        <ul>
+                            <li><a href="#">Sunglasses</a></li>
+                            <li><a href="#">optic</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4 style="text-align: left; padding-left: 0;margin-bottom:9%;">contact us</h4>
+                        <ul>
+                            <li><a href="#">hajrbouhali07@gmail.com</a></li>
+                            <li><a href="#">0684912299</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4   style="text-align: left; padding-left: 0;margin-bottom: 9%;">follow us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </footer>
+       <script>
+        window.addEventListener('scroll', function() {
+            const entete = document.getElementById('entete');
+            if (window.scrollY > 100) { // Change this value as needed
+                entete.classList.add('scrolled');
+            } else {
+                entete.classList.remove('scrolled');
+            }
+        });
+        </script> 
 </body>
 </html>
