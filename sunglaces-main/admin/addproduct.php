@@ -21,6 +21,7 @@ if(isset($_POST['add'])) {
     $sex = $_POST['sex'];
     $brand_name = $_POST['brand']; // Assuming 'brand' is the name from the form
     $category_name = $_POST['category']; // Assuming 'category' is the name from the form
+    $imagepath = $_POST['imagepath']; // Assuming 'imagepath' is the path from the form
 
     // Check if brand exists in Brands table and get brand_id
     $brand_id = null;
@@ -58,15 +59,24 @@ if(isset($_POST['add'])) {
     }
 
     // Insert into Products table
-    $sql = "INSERT INTO Products (name, description, price, stock, style, sex, brand_id, category_id) 
-            VALUES ('$productname', '$designation', '$productprice', '$quantity', '$style', '$sex', '$brand_id', '$category_id')";
+    $sql_insert_product = "INSERT INTO Products (name, description, price, stock, style, sex, brand_id, category_id) 
+                           VALUES ('$productname', '$designation', '$productprice', '$quantity', '$style', '$sex', '$brand_id', '$category_id')";
 
-    if ($conn->query($sql) === TRUE) {
-        echo "New product created successfully";
+    if ($conn->query($sql_insert_product) === TRUE) {
+        // Get the product_id of the newly inserted product
+        $product_id = $conn->insert_id;
+
+        // Insert into ProductImages table
+        $sql_insert_image = "INSERT INTO product_images (product_id, path_image	) VALUES ('$product_id', '$imagepath')";
+        if ($conn->query($sql_insert_image) === TRUE) {
+            echo "New product and image created successfully";
+        } else {
+            echo "Error inserting image: " . $conn->error;
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error inserting product: " . $conn->error;
     }
-}
 
-$conn->close();
+    $conn->close();
+}
 ?>
