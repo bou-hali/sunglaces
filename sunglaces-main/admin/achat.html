@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="stylec.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Theme CSS -->
+    <title>Admin - To-Do List</title>
+</head>
+<body>
+<section id="sidebar">
+    <a href="#" class="brand">
+        <i class='bx bx-user'></i>
+        <span class="text">nameadmine</span>
+    </a>
+    <div style="display: flex ; flex-direction: column; justify-content: space-between; height: 90%;">
+        <ul class="side-menu top">
+            <li>
+                <a href="index.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="commande.html" class="nav-link1">
+                    <i class='bx bxs-truck'></i>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="analytics.html">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="text">Analytics</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="achat.html">
+                    <i class='bx bxs-shopping-bag'></i>
+                    <span class="text">Purchases</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#" class="logout">
+                    <i class='bx bxs-log-out-circle'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+<section id="content">
+    <nav>
+        <i class='bx bx-menu'></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+            <div class="form-input">
+                <input type="search" name="search" aria-label="Search">
+                <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden>
+        <label for="switch-mode" class="switch-mode"></label>
+    </nav>
+    <section>
+        <div class="container-fluid" style="margin-right: 40%; width: 70%;">
+            <div class="row">
+                <div class="col-lg-10 col-md-8 ml-auto">
+                    <div class="row align-items-center pt-md-5 mt-md-5 mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-title text-center mt-3">
+                                    <h3>Add Product</h3>
+                                </div>
+                                <div class="card-body">
+                                    <form action="addproduct.php" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <label for="productname">Product Name:</label>
+                                            <input type="text" class="form-control" id="productname" name="productname" placeholder="Enter Product Name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="designation">Designation:</label>
+                                            <input type="text" class="form-control" id="designation" name="designation" placeholder="Enter Designation" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="productprice">Product Price:</label>
+                                            <input type="text" class="form-control" id="productprice" name="productprice" placeholder="Enter Product Price" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="quantity">Quantity:</label>
+                                            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="style">Style:</label>
+                                            <input type="text" class="form-control" id="style" name="style" placeholder="Enter Style" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sex">Sex:</label>
+                                            <select class="form-control" id="sex" name="sex" required>
+                                                <option value="">Select Sex</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="brand">Brand:</label>
+                                            <input type="text" class="form-control" id="brand" name="brand" placeholder="Enter Brand" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Category:</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="category" id="sunglasses" value="sunglasses" required>
+                                                <label class="form-check-label" for="sunglasses">Sunglasses</label>
+                                            </div><br>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="category" id="optic" value="opticglasses" required>
+                                                <label class="form-check-label" for="optic">Optic</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imagepath">Image Path:</label>
+                                            <input type="text" class="form-control" id="imagepath" name="imagepath" placeholder="Enter Image Path" required>
+
+                                        </div>
+                                        <button class="btn btn-dark mt-5 mx-auto d-block" type="submit" name="add">Add Product</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- Bootstrap js -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/popper.js"></script>
+<!-- OWL Car -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Show More js -->
+<script src="js/showMoreItems.min.js"></script>
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- Theme js -->
+<script type="text/javascript" src="js/main.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
