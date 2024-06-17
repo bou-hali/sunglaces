@@ -10,25 +10,46 @@
     <link rel="stylesheet" href="product.css">
     <title>OptiTrend</title>
     <style>
-        .entete {
-          background-image: url('portrait-belle-femme-maquillage-lumineux-chapeau-lunettes-soleil-fond-studio-vert-marque-coiffure-elegantes-mode-couleurs-ete-concept-beaute-mode-publicite-souriant_155003-25571.jpg'); 
-          background-size: cover; 
-          background-repeat: no-repeat; 
-          background-position: center; 
-          margin: 90px 0 0 20px; 
-          height: 40rem; 
-          transition: all 0.5s ease-in-out;
-        }
-      
-        .entete.scrolled {
-          margin: 50px 0 0 10px; 
-          height: 30rem; 
-        }
         
-        .content {
-          height: 2000px;
+
+        <?php
+        // Connexion à la base de données
+        $con = mysqli_connect("localhost", "root", "", "optitrend");
+        if (!$con) {
+            die("Connection failed: " . mysqli_connect_error());
         }
+
+        // Récupérer la catégorie des produits à afficher
+        $cat = isset($_GET['category']) ? (int)$_GET['category'] : 0;
+
+        // Requête pour récupérer les produits de la catégorie
+        $req = mysqli_query($con, "SELECT product_id, name, price FROM products WHERE category_id=$cat");
+
+        while ($res = mysqli_fetch_array($req)) {
+            $product_id = $res['product_id'];
+            $req1 = mysqli_query($con, "SELECT path_image FROM product_images WHERE product_id='$product_id'");
+            $images = [];
+            while ($res1 = mysqli_fetch_array($req1)) {
+                $images[] = $res1['path_image'];
+            }
+
+            // Générer le CSS pour chaque produit avec ses images
+            if (count($images) > 0) {
+                echo ".style$product_id { background-image: url( $images[0] ); margin-bottom: 2rem; }\n";
+                echo "@keyframes changeBackground$product_id {";
+                foreach ($images as $index => $image) {
+                    $percent = ($index / count($images)) * 100;
+                    echo "$percent% { background-image: url($image); }\n";
+                }
+                echo "}\n";
+                echo ".style$product_id:hover { animation: changeBackground$product_id 3s infinite; }\n";
+            }
+        }
+
+        mysqli_close($con);
+        ?>
     </style>
+
 </head>
 <body>
     <header class="header">
@@ -103,41 +124,37 @@
         </nav>
     </header>
     <div class="entete" id="entete"></div>
-
-    <section class="bests-items" id="bests-items">
-        <h2 class="section-title">Nos meilleures ventes</h2>
-        <div class="best-plants">
-        <?php
+        <section class="bests-items" id="bests-items">
+    <h2 class="section-title">Nos meilleures ventes</h2>
+    <div class="best-plants style-grid">
+    <?php
             $con = mysqli_connect("localhost", "root", "", "optitrend");
 
-            $cat = $_GET['category'];
+            $cat = isset($_GET['category']) ? (int)$_GET['category'] : 0;
 
             if (!$con) {
                 die("Connection failed: " . mysqli_connect_error());
             }
 
-            $req = mysqli_query($con, "SELECT name, price, product_id FROM products WHERE category_id=$cat");
+            $req = mysqli_query($con, "SELECT product_id, name, price FROM products WHERE category_id=$cat");
 
             while ($res = mysqli_fetch_array($req)) {
-                $sh = '<a href="fiche_produit1.html?idpro=' . $res['product_id'] . '" class="style-box style1 no-grid">';
-                $sh .= '<div class="style-details">';
-                $sh .= '<p class="style-name">' . $res['name'] . '</p>';
-                $sh .= '<p class="style-price">' . $res['price'] . '</p>';
-                $sh .= '<form action="fiche_produit1.html" method="POST">
-                            <input type="submit" name="ok" value="Ajouter">
-                            <input type="hidden" name="idp" value="' . $res['product_id'] . '">
-                        </form>
-                    </div>
-                    </a>';
-                
-                echo $sh;
+                echo '<a href="fiche_produit1.html?idpro=' . $res['product_id'] . '" class="style-box style' . $res['product_id'] . '">';
+                echo '<div class="style-details">';
+                echo '<p class="style-name">' . $res['name'] . '</p>';
+                echo '<p class="style-price">' . $res['price'] . '</p>';
+                echo '<form action="fiche_produit.php" method="POST">';
+                echo '<input type="submit" name="ok" value="voir">';
+                echo '<input type="hidden" name="idp" value="' . $res['product_id'] . '">';
+                echo '</form>';
+                echo '</div>';
+                echo '</a>';
             }
 
             mysqli_close($con);
-        ?>
-        </div>
-    </section> 
-
+            ?>
+    </div>
+</section>
     <footer class="footer">
         <div class="container">
             <div class="row3">

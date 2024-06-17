@@ -126,81 +126,69 @@
     <div class="container1">
         <div class="row">
             <div class="col-2">
-                <img src="b42a8df05cc65fe5d770b3b403c27b99.jpg"
-                    id="emphasisPicture">
-                <div class="smallImg">
-                    <div class="col-4">
-                        <img src="b42a8df05cc65fe5d770b3b403c27b99.jpg" class="smallpictures active" alt="">
+            <?php 
+                if(isset($_POST["ok"])) {
+                    $idp = $_POST["idp"];
+                    $con = mysqli_connect("localhost", "root", "", "optitrend");
+
+                    if (!$con) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    $req = mysqli_query($con, "SELECT * FROM products WHERE product_id='$idp'");
+                    $req1 = mysqli_query($con, "SELECT path_image FROM product_images WHERE product_id='$idp'");
+
+                    $images = array();
+                    while ($res1 = mysqli_fetch_array($req1)) {
+                        $images[] = $res1['path_image'];
+                    }
+
+                    if (count($images) > 0) {
+                        echo '<img src="' . $images[0] . '" id="emphasisPicture">';
+                        echo '<div class="smallImg">';
+                        echo '<div class="col-4">
+                                <img src="' . $images[0] . '" class="smallpictures active" alt="">
+                              </div>';
+                        if (isset($images[1])) {
+                            echo '<div class="col-4">
+                                    <img src="' . $images[1] . '" class="smallpictures" alt="">
+                                  </div>';
+                        }
+                        if (isset($images[2])) {
+                            echo '<div class="col-4">
+                                    <img src="' . $images[2] . '" class="smallpictures" alt="">
+                                  </div>';
+                        }
+                        echo '</div>';
+                    }
+                    echo '</div>';
+                    echo '<div class="col-2">';
+                    echo '<form action="panier.php" method="POST">';
+                    while ($res = mysqli_fetch_array($req)) {
+                        echo '<small class="companyName">'. $res['name'] .'</small>';
+                        echo '<h2>Fall Limited Edition Sunglasses</h2>';
+                        echo '<p>' . $res['description'] . '</p>';
+                        echo '<div class="price"><span class="productValue">' . $res['price'] . '</span></div>';
+                   }
+                    echo' <div class="buttonsRow">
+                        <div class="increment">
+                            <img src="icon-minus.png" id="minus">
+                            <input type="number" name="totalItems" id="totalItems" value="1">
+                            <img src="icon-plus.png" id="plus">
+                        </div>
+                        <div class="callToAction">
+                            <button id="btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <img src="fa98bdba85e85bc39e7c50a40e68315e.jpg" class="smallpictures" alt="">
-                    </div>
-                    <div class="col-4">
-                        <img src="74d30f180108c83db65637b1db424b02.jpg" class="smallpictures" alt="">
-                    </div>
-                    <div class="col-4">
-                        <img src="76387af09cdb913793280390655b0d28.jpg" class="smallpictures" alt="">
-                    </div>
-                </div>
-                <div class="carousel mobile" data-carousel>
-                    <button class="carousel-button prev" data-carousel-button="prev"> <img
-                            src="icon-previous.svg"></button>
-                    <button class="carousel-button next" data-carousel-button="next"> <img
-                            src="icon-next.svg"></button>
-                    <ul data-slides>
-                        <li class="slide" data-active><img src="b42a8df05cc65fe5d770b3b403c27b99.jpg"> </li>
-                        <li class="slide"><img src="fa98bdba85e85bc39e7c50a40e68315e.jpg"></li>
-                        <li class="slide"><img src="74d30f180108c83db65637b1db424b02.jpg"></li>
-                        <li class="slide"><img src="76387af09cdb913793280390655b0d28.jpg"></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-2">
-                <small class="companyName">
-                    Sunglasses
-                </small>
-                <h2>
-                    Fall Limited Edition Sunglasee
-                </h2>
-                <p>
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                    These low-profile Sunglasses are your perfect view wear
-                </p>
-                <div class="price">
-                    <span class="productValue">125.00</span>
-
-                </div>
-
-                <div class="buttonsRow">
-                    <div class="increment">
-
-                        <img src="icon-minus.png" id="minus">
-
-                        <input type="number" name="totalItems" id="totalItems" value="1">
-
-                        <img src="icon-plus.png" id="plus">
-
-                    </div>
-                    <div class="callToAction">
-                        <button id="btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-                      </div>
-                      
-
-                </div>
-
-
-
-
-            </div>
-        </div> 
+                    <input type="hidden" name="idp" value="' . $idp . '">
+                </form>'; 
+                echo '</div>';
+                }
+                ?>
+            </div> 
+        </div>
+    </div>
+        <!-- </div> 
             <section class="bests-items " id="bests-items">
                 <h2 class="section-title" style="margin-left: 2rem;">
                     Produit similaire
@@ -208,7 +196,7 @@
 
                 <div class="best-plants prod">
 
-                    <a href="fiche_produit1.html " class="style-box style1 no-grid ">
+                    <a href="fiche_produit.html " class="style-box style1 no-grid ">
                         <div class="style-details">
                             <p class="style-name">Style 1</p>
                             <p class="style-price">240 MAD</p>
@@ -356,7 +344,7 @@
                         </div>
                     </div>
                 </div>
-           </footer>
+           </footer> -->
 
             
            <script>
