@@ -18,7 +18,44 @@
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="stylesproduct.css">
      <script src="fich.js" defer></script> 
+     <style>
+        <?php
+        // Connexion à la base de données
+        $con = mysqli_connect("localhost", "root", "", "optitrend");
+        if (!$con) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
+        // Récupérer la catégorie des produits à afficher
+        $cat = isset($_GET['category']) ? (int)$_GET['category'] : 0;
+
+        // Requête pour récupérer les produits de la catégorie
+        $req = mysqli_query($con, "SELECT product_id, name, price FROM products WHERE category_id=$cat");
+
+        while ($res = mysqli_fetch_array($req)) {
+            $product_id = $res['product_id'];
+            $req1 = mysqli_query($con, "SELECT path_image FROM product_images WHERE product_id='$product_id'");
+            $images = [];
+            while ($res1 = mysqli_fetch_array($req1)) {
+                $images[] = $res1['path_image'];
+            }
+
+            // Générer le CSS pour chaque produit avec ses images
+            if (count($images) > 0) {
+                echo ".style$product_id { background-image: url( $images[0] ); margin-bottom: 2rem; }\n";
+                echo "@keyframes changeBackground$product_id {";
+                foreach ($images as $index => $image) {
+                    $percent = ($index / count($images)) * 100;
+                    echo "$percent% { background-image: url($image); }\n";
+                }
+                echo "}\n";
+                echo ".style$product_id:hover { animation: changeBackground$product_id 3s infinite; }\n";
+            }
+        }
+
+        mysqli_close($con);
+        ?>
+    </style>
 </head>
 
 <body>
@@ -125,176 +162,96 @@
 
     <div class="container1">
         <div class="row">
-            <div class="col-2">
             <?php 
-                if(isset($_POST["ok"])) {
-                    $idp = $_POST["idp"];
-                    $con = mysqli_connect("localhost", "root", "", "optitrend");
+            if(isset($_POST["ok"])) {
+                $idp = $_POST["idp"];
+                $con = mysqli_connect("localhost", "root", "", "optitrend");
 
-                    if (!$con) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
+                if (!$con) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
 
-                    $req = mysqli_query($con, "SELECT * FROM products WHERE product_id='$idp'");
-                    $req1 = mysqli_query($con, "SELECT path_image FROM product_images WHERE product_id='$idp'");
+                $req = mysqli_query($con, "SELECT * FROM products WHERE product_id='$idp'");
+                $req1 = mysqli_query($con, "SELECT path_image FROM product_images WHERE product_id='$idp'");
 
-                    $images = array();
-                    while ($res1 = mysqli_fetch_array($req1)) {
-                        $images[] = $res1['path_image'];
-                    }
+                $images = array();
+                while ($res1 = mysqli_fetch_array($req1)) {
+                    $images[] = $res1['path_image'];
+                }
 
-                    if (count($images) > 0) {
-                        echo '<img src="' . $images[0] . '" id="emphasisPicture">';
-                        echo '<div class="smallImg">';
+                echo '<div class="col-2">';
+                if (count($images) > 0) {
+                    echo '<img src="' . $images[0] . '" id="emphasisPicture">';
+                    echo '<div class="smallImg">';
+                    echo '<div class="col-4">
+                            <img src="' . $images[0] . '" class="smallpictures active" alt="">
+                          </div>';
+                    if (isset($images[1])) {
                         echo '<div class="col-4">
-                                <img src="' . $images[0] . '" class="smallpictures active" alt="">
+                                <img src="' . $images[1] . '" class="smallpictures" alt="">
                               </div>';
-                        if (isset($images[1])) {
-                            echo '<div class="col-4">
-                                    <img src="' . $images[1] . '" class="smallpictures" alt="">
-                                  </div>';
-                        }
-                        if (isset($images[2])) {
-                            echo '<div class="col-4">
-                                    <img src="' . $images[2] . '" class="smallpictures" alt="">
-                                  </div>';
-                        }
-                        echo '</div>';
+                    }
+                    if (isset($images[2])) {
+                        echo '<div class="col-4">
+                                <img src="' . $images[2] . '" class="smallpictures" alt="">
+                              </div>';
                     }
                     echo '</div>';
-                    echo '<div class="col-2">';
-                    echo '<form action="panier.php" method="POST">';
-                    while ($res = mysqli_fetch_array($req)) {
-                        echo '<small class="companyName">'. $res['name'] .'</small>';
-                        echo '<h2>Fall Limited Edition Sunglasses</h2>';
-                        echo '<p>' . $res['description'] . '</p>';
-                        echo '<div class="price"><span class="productValue">' . $res['price'] . '</span></div>';
-                   }
-                    echo' <div class="buttonsRow">
-                        <div class="increment">
-                            <img src="icon-minus.png" id="minus">
-                            <input type="number" name="totalItems" id="totalItems" value="1">
-                            <img src="icon-plus.png" id="plus">
-                        </div>
-                        <div class="callToAction">
-                            <button id="btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
-                        </div>
+                }
+                echo '</div>';
+
+                echo '<div class="col-2">';
+                echo '<form action="panier.php" method="POST">';
+                while ($res = mysqli_fetch_array($req)) {
+                    echo '<small class="companyName">'. $res['name'] .'</small>';
+                    echo '<h2>Fall Limited Edition Sunglasses</h2>';
+                    echo '<p>' . $res['description'] . '</p>';
+                    echo '<div class="price"><span class="productValue">' . $res['price'] . '</span></div>';
+                    $style = $res['style']; // Get the style for similar products
+                }
+                echo' <div class="buttonsRow">
+                    <div class="increment">
+                        <img src="icon-minus.png" id="minus">
+                        <input type="number" name="totalItems" id="totalItems" value="1">
+                        <img src="icon-plus.png" id="plus">
                     </div>
-                    <input type="hidden" name="idp" value="' . $idp . '">
+                    <div class="callToAction">
+                        <button id="btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                    </div>
+                </div>
+                <input type="hidden" name="idp" value="' . $idp . '">
                 </form>'; 
                 echo '</div>';
-                }
-                ?>
-            </div> 
+            }
+            ?>
         </div>
     </div>
-        <!-- </div> 
-            <section class="bests-items " id="bests-items">
-                <h2 class="section-title" style="margin-left: 2rem;">
-                    Produit similaire
-                </h2>
 
-                <div class="best-plants prod">
+    <section class="bests-items" id="bests-items">
+        <h2 class="section-title style='font_size=80rem;'">Similaire Produits</h2>
+        <div class="best-plants style-grid">
+            <?php
+            if (isset($style)) {
+                $req2 = mysqli_query($con, "SELECT product_id, name, price FROM products WHERE style='$style' AND product_id != '$idp'");
 
-                    <a href="fiche_produit.html " class="style-box style1 no-grid ">
-                        <div class="style-details">
-                            <p class="style-name">Style 1</p>
-                            <p class="style-price">240 MAD</p>
-                            <form action="fiche_produit1.html" method="POST">
-                                <input type="submit" name="ok" value="Ajouter">
-                                <input type="hidden" name="idp" value="1">
-                                <input type="hidden" name="name" value="Style 1">
-                                <input type="hidden" name="price" value="240 MAD">
-                            </form>
-                        </div>
-                    </a>
-                    <a href="" class="style-box style2 no-grid ">
-                        <div class="style-details">
-                            <p class="style-name">style2</p>
-                            <p class="style-price">350 MAD</p>
-                            <form action="panier.php" method="POST">
-                                <input type="submit" name="ok" value="Ajouter">
-                                <input type="hidden" name="idp" value="1">
-                                <input type="hidden" name="name" value="Style 2">
-                                <input type="hidden" name="price" value="240 MAD">
-                            </form>
-                        </div>
-                    </a>
-                    <a href="" class="style-box style3 no-grid ">
-                        <div class="style-details">
-                            <p class="style-name">style3 </p>
-                            <p class="style-price">350MAD</p>
-                            <form action="panier.php" method="POST">
-                                <input type="submit" name="ok" value="Ajouter">
-                                <input type="hidden" name="idp" value="1">
-                                <input type="hidden" name="name" value="Style 3">
-                                <input type="hidden" name="price" value="350 MAD">
-                            </form>
-                        </div>
-                    </a>
-                    <a href="" class="style-box style4 no-grid ">
-                        <div class="style-details">
-                            <p class="style-name">style4</p>
-                            <p class="style-price">150MAD</p>
-                            <form action="panier.php" method="POST">
-                                <input type="submit" name="ok" value="Ajouter">
-                                <input type="hidden" name="idp" value="1">
-                                <input type="hidden" name="name" value="Style 4">
-                                <input type="hidden" name="price" value="150 MAD">
-                            </form>
-                        </div>
-                    </a>
-                    <a href="" class="style-box style4 no-grid ">
-                        <div class="style-details">
-                            <p class="style-name">style4</p>
-                            <p class="style-price">150MAD</p>
-                            <form action="panier.php" method="POST">
-                                <input type="submit" name="ok" value="Ajouter">
-                                <input type="hidden" name="idp" value="1">
-                                <input type="hidden" name="name" value="Style 4">
-                                <input type="hidden" name="price" value="150 MAD">
-                            </form>
-                        </div>
-                    </a>
-                    <a href="" class="style-box style4 no-grid ">
-                        <div class="style-details">
-                            <p class="style-name">style4</p>
-                            <p class="style-price">150MAD</p>
-                            <form action="panier.php" method="POST">
-                                <input type="submit" name="ok" value="Ajouter">
-                                <input type="hidden" name="idp" value="1">
-                                <input type="hidden" name="name" value="Style 4">
-                                <input type="hidden" name="price" value="150 MAD">
-                            </form>
-                        </div>
-                    </a>
-                    <a href="" class="style-box style4 no-grid ">
-                        <div class="style-details">
-                            <p class="style-name">style4</p>
-                            <p class="style-price">150MAD</p>
-                            <form action="panier.php" method="POST">
-                                <input type="submit" name="ok" value="Ajouter">
-                                <input type="hidden" name="idp" value="1">
-                                <input type="hidden" name="name" value="Style 4">
-                                <input type="hidden" name="price" value="150 MAD">
-                            </form>
-                        </div>
-                    </a>
-                    <a href="" class="style-box style4 no-grid  ">
-                        <div class="style-details">
-                            <p class="style-name">style4</p>
-                            <p class="style-price">150MAD</p>
-                            <form action="panier.php" method="POST">
-                                <input type="submit" name="ok" value="Ajouter">
-                                <input type="hidden" name="idp" value="1">
-                                <input type="hidden" name="name" value="Style 4">
-                                <input type="hidden" name="price" value="150 MAD">
-                            </form>
-                        </div>
-                    </a>
-                </div>
+                while ($res2 = mysqli_fetch_array($req2)) {
+                    echo '<a href="fiche_produit.php" class="style-box style' . $res2['product_id'] . '">';
+                    echo '<div class="style-details">';
+                    echo '<p class="style-name">' . $res2['name'] . '</p>';
+                    echo '<p class="style-price">' . $res2['price'] . '</p>';
+                    echo '<form action="fiche_produit.php" method="POST">';
+                    echo '<input type="submit" name="ok" value="voir">';
+                    echo '<input type="hidden" name="idp" value="' . $res2['product_id'] . '">';
+                    echo '</form>';
+                    echo '</div>';
+                    echo '</a>';
+                }
+            }
 
-            </section>
+            mysqli_close($con);
+            ?>
+        </div>
+    </section>
             <footer class="footer">
                 <div class="container">
                     <div class="row3">

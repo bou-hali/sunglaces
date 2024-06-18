@@ -139,7 +139,7 @@
             $req = mysqli_query($con, "SELECT product_id, name, price FROM products WHERE category_id=$cat");
 
             while ($res = mysqli_fetch_array($req)) {
-                echo '<a href="fiche_produit1.html?idpro=' . $res['product_id'] . '" class="style-box style' . $res['product_id'] . '">';
+                echo '<a href="fiche_produit.php" class="style-box style' . $res['product_id'] . '">';
                 echo '<div class="style-details">';
                 echo '<p class="style-name">' . $res['name'] . '</p>';
                 echo '<p class="style-price">' . $res['price'] . '</p>';
