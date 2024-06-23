@@ -109,13 +109,7 @@
                         <div class="cartDiv empty" id="cartDiv" style="margin-top: 33px; margin-right: 20px;">
                             <img src="icon-cart.svg" class="icon" id="cartIcon">
                             <div class="cart-box hide" id="cart-box">
-                                <div class="heading">
-                                    <span>Cart</span>
-                                </div>
-                                <div class="products" id="products"></div>
-                                <div class="checkout" id="checkout">
-                                    <a href="panier.html"><button>Checkout</button></a>
-                                </div>
+                                
                             </div>
                         </div>
                     </li>
@@ -144,7 +138,7 @@
                 echo '<p class="style-name">' . $res['name'] . '</p>';
                 echo '<p class="style-price">' . $res['price'] . '</p>';
                 echo '<form action="fiche_produit.php" method="POST">';
-                echo '<input type="submit" name="ok" value="voir">';
+                echo '<input type="submit" name="voir" value="voir">';
                 echo '<input type="hidden" name="idp" value="' . $res['product_id'] . '">';
                 echo '</form>';
                 echo '</div>';

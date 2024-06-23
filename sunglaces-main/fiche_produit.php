@@ -149,14 +149,9 @@
                         <div class="cartDiv empty" id="cartDiv" style="margin-top: 33px; margin-right: 20px;">
                             <img src="icon-cart.svg" class="icon" id="cartIcon">
                             <div class="cart-box hide" id="cart-box">
-                                <div class="heading">
-                                    <span>Cart</span>
-                                </div>
-                                <div class="products" id="products">
-                                </div>
-                                <div class="checkout" id="checkout">
-                                    <a href="panier.html"> <button>Checkout</button></a>
-                                </div>
+                               
+                                
+                                
                             </div>
                         </div>
                     </li>
@@ -167,71 +162,76 @@
 
     <div class="container1">
         <div class="row">
-            <?php 
-            if(isset($_POST["ok"])) {
-                $idp = $_POST["idp"];
-                $con = new mysqli("localhost", "root", "", "optitrend");
+        <?php 
+if(isset($_POST["voir"])) {
+    $idp = $_POST["idp"];
+    $con = new mysqli("localhost", "root", "", "optitrend");
 
-                if ($con->connect_error) {
-                    die("Connection failed: " . $con->connect_error);
-                }
+    if ($con->connect_error) {
+        die("Connection failed: " . $con->connect_error);
+    }
 
-                $req = $con->query("SELECT * FROM products WHERE product_id='$idp'");
-                $req1 = $con->query("SELECT path_image FROM product_images WHERE product_id='$idp'");
+    $req = $con->query("SELECT * FROM products WHERE product_id='$idp'");
+    $req1 = $con->query("SELECT path_image FROM product_images WHERE product_id='$idp'");
 
-                $images = array();
-                while ($res1 = $req1->fetch_assoc()) {
-                    $images[] = $res1['path_image'];
-                }
+    $images = array();
+    while ($res1 = $req1->fetch_assoc()) {
+        $images[] = $res1['path_image'];
+    }
 
-                echo '<div class="col-2">';
-                if (count($images) > 0) {
-                    echo '<img src="' . $images[0] . '" id="emphasisPicture">';
-                    echo '<div class="smallImg">';
-                    echo '<div class="col-4">
-                            <img src="' . $images[0] . '" class="smallpictures active" alt="">
-                          </div>';
-                    if (isset($images[1])) {
-                        echo '<div class="col-4">
-                                <img src="' . $images[1] . '" class="smallpictures" alt="">
-                              </div>';
-                    }
-                    if (isset($images[2])) {
-                        echo '<div class="col-4">
-                                <img src="' . $images[2] . '" class="smallpictures" alt="">
-                              </div>';
-                    }
-                    echo '</div>';
-                }
-                echo '</div>';
+    echo '<div class="col-2">';
+    if (count($images) > 0) {
+        echo '<img src="' . $images[0] . '" id="emphasisPicture">';
+        echo '<div class="smallImg">';
+        echo '<div class="col-4">
+                <img src="' . $images[0] . '" class="smallpictures active" alt="">
+              </div>';
+        if (isset($images[1])) {
+            echo '<div class="col-4">
+                    <img src="' . $images[1] . '" class="smallpictures" alt="">
+                  </div>';
+        }
+        if (isset($images[2])) {
+            echo '<div class="col-4">
+                    <img src="' . $images[2] . '" class="smallpictures" alt="">
+                  </div>';
+        }
+        echo '</div>';
+    }
+    echo '</div>';
 
-                echo '<div class="col-2">';
-                echo '<form action="panier.php" method="POST">';
-                while ($res = $req->fetch_assoc()) {
-                    echo '<small class="companyName">'. $res['name'] .'</small>';
-                    echo '<h2>Fall Limited Edition Sunglasses</h2>';
-                    echo '<p>' . $res['description'] . '</p>';
-                    echo '<div class="price"><span class="productValue">' . $res['price'] . '</span></div>';
-                    $style = $res['style']; // Get the style for similar products
-                    $CATEGORY = $res['category_id']; // Get the CATEGO for similar products
-                }
-                echo' <div class="buttonsRow">
-                    <div class="increment">
-                        <img src="icon-minus.png" id="minus">
-                        <input type="number" name="totalItems" id="totalItems" value="1">
-                        <img src="icon-plus.png" id="plus">
-                    </div>
-                    <div class="callToAction">
-                        <button id="btn" type="button">Add to Cart</button>
-                    </div>
-                </div>
-                <input type="hidden" name="idp" value="' . $idp . '">
-                </form>'; 
-                echo '</div>';
-            }
-            ?>
+    echo '<div class="col-2">';
+    echo '<form action="panier.php" method="POST">';
+    while ($res = $req->fetch_assoc()) {
+        echo '<small class="companyName">'. $res['name'] .'</small>';
+        echo '<h2>Fall Limited Edition Sunglasses</h2>';
+        echo '<p>' . $res['description'] . '</p>';
+        echo '<div class="price"><span class="productValue">' . $res['price'] . '</span></div>';
+        $style = $res['style']; // Get the style for similar products
+        $CATEGORY = $res['category_id']; // Get the CATEGO for similar products
+    }
+    echo ' <div class="buttonsRow">
+            <div class="increment">
+                <img src="icon-minus.png" id="minus">
+                <input type="number" name="totalItems" id="totalItems" value="1">
+                <img src="icon-plus.png" id="plus">
+            </div>
+            <div class="callToAction">
+                <button id="btn" type="submit" name="ok">Add to Cart</button>
+            </div>
         </div>
+        <input type="hidden" name="idp" value="' . $idp . '">
+    </form>'; 
+    
+    // Afficher l'alerte JavaScript après avoir ajouté le produit au panier avec succès
+    echo '<script>alert("Le produit a été ajouté au panier avec succès!");</script>';
+
+    echo '</div>';
+}
+?>
+
     </div>
+  
 
     <section class="bests-items" id="bests-items">
         <h2 class="section-title" style="font-size: 2rem;">Similaire Produits</h2>
@@ -246,7 +246,7 @@
                     echo '<p class="style-name">' . $res2['name'] . '</p>';
                     echo '<p class="style-price">' . $res2['price'] . '</p>';
                     echo '<form action="fiche_produit.php" method="POST">';
-                    echo '<input type="submit" name="ok" value="voir">';
+                    echo '<input type="submit" name="add" value="voir">';
                     echo '<input type="hidden" name="idp" value="' . $res2['product_id'] . '">';
                     echo '</form>';
                     echo '</div>';
