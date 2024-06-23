@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script src="fich.js" defer></script> 
-    <link rel="stylesheet" type="text/css" href="stylecart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
+        integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=1.0">
     <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="stylesproduct.css?v=1.0">
+    <script src="fich.js" defer></script>
+    
 </head>
 <body>
     <header class="header">
@@ -97,135 +102,53 @@
 
                     <li class="dropdown__item">
                         <div class="cartDiv empty" id="cartDiv" style="margin-top: 33px; margin-right: 20px;">
-                            <img src="icon-cart.svg" class="icon" id="cartIcon"><div class="cart-box hide" id="cart-box">
-                            <div class="heading">
-                              <span>Cart</span>
+                            <img src="icon-cart.svg" class="icon" id="cartIcon">
+                            <div class="cart-box hide" id="cart-box">
+                                <div class="heading">
+                                  <span>Cart</span>
+                                </div>
+                                <div class="products" id="products">
+                                </div>
+                                <div class="checkout" id="checkout">
+                                    <a href="panier.html"><button>Checkout</button></a>
+                                </div>
                             </div>
-                            <div class="products" id="products">
-                            </div>
-                            <div class="checkout" id="checkout">
-                             <a href="panier.html"> <button>Checkout</button></a>
-                            </div>
-                          </div>
+                        </div>
                     </li>
-                          </div>
-                          
                 </ul>
             </div>
         </nav>
     </header>
-    <div class="container5">
 
-        <h1>Shopping Cart</h1>
-    
-        <div class="cart">
-    
-            <div class="products5">
-    
-                <div class="product5">
-    
-                    <img src="74d30f180108c83db65637b1db424b02.jpg">
-    
-                    <div class="product5-info">
-    
-                        <h3 class="product5-name">white sunglasses</h3>
-    
-                        <h4 class="product5-price">250</h4>
-    
-                        <h4 class="product5-offer">50%</h4>
-    
-                        <p class="product5-quantity">Qnt: <input value="1" name="">
-    
-                        <p class="product5-remove">
-    
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-    
-                            <span class="remove">Remove</span>
-    
-                        </p>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="product5">
-    
-                    <img src="b42a8df05cc65fe5d770b3b403c27b99.jpg">
-    
-                    <div class="product5-info">
-    
-                        <h3 class="product5-name">black sunglasses</h3>
-    
-                        <h4 class="product5-price">200</h4>
-    
-                        <h4 class="product5-offer">40%</h4>
-    
-                        <p class="product5-quantity">Qnt: <input value="1" name="">
-    
-                        <p class="product5-remove">
-    
-                            <i class="fa fa-trash" aria-hidden="true"></i>
-    
-                            <span class="remove">Remove</span>
-    
-                        </p>
-    
-                    </div>
-    
-                </div>
-    
-            </div>
-    
-            <div class="cart-total">
-    
-                <p>
-    
-                    <span>Total Price</span>
-    
-                    <span>250</span>
-    
-                </p>
-    
-                <p>
-    
-                    <span>Number of Items</span>
-    
-                    <span>2</span>
-    
-                </p>
-    
-                <p>
-    
-                    <span>You Save</span>
-    
-                    <span>120</span>
-    
-                </p>
-    
-                <a href="#">Proceed to Checkout</a>
-    
-            </div>
-    
-        </div>
-    
+    <div class="container1">
+        <div class="row">
+          
+        </div> 
     </div>
+
+    <section class="bests-items" id="bests-items">
+        <h2 class="section-title" style="font-size: 2rem; margin-top: 60px; margin-bottom: 20px;">Similaire Produits</h2>
+        <div class="best-plants style-grid">
+        
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <div class="row3">
                 <div class="footer-col">
-                <h4 style="text-align: left; padding-left: 0; font-size: 5rem; margin-left: 2px;margin-bottom: 5%;">OptiTrend</h4> 
-                    <ul>
-                    </ul>
+                    <h4 style="text-align: left; padding-left: 0; font-size: 5rem; margin-left: 2px;">OptiTrend</h4> 
+                    <ul></ul>
                 </div>
                 <div class="footer-col">
-                    <h4 style="text-align: left; padding-left: 0; margin-bottom: 5%;">company</h4>
+                    <h4 style="text-align: left; padding-left: 0;">company</h4>
                     <ul>
                         <li><a href="#">about us</a></li>
                         <li><a href="#">privacy policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 style="text-align: left; padding-left: 0;margin-bottom: 5%;">get help</h4>
+                    <h4 style="text-align: left; padding-left: 0;">get help</h4>
                     <ul>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">shipping</a></li>
@@ -234,21 +157,21 @@
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 style="text-align: left; padding-left: 0;margin-bottom: 5%;">online shop</h4>
+                    <h4 style="text-align: left; padding-left: 0;">online shop</h4>
                     <ul>
                         <li><a href="#">Sunglasses</a></li>
                         <li><a href="#">optic</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4 style="text-align: left; padding-left: 0;margin-bottom: 5%;">contact us</h4>
+                    <h4 style="text-align: left; padding-left: 0;">contact us</h4>
                     <ul>
                         <li><a href="#">hajrbouhali07@gmail.com</a></li>
                         <li><a href="#">0684912299</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4   style="text-align: left; padding-left: 0;margin-bottom: 5%;">follow us</h4>
+                    <h4 style="text-align: left; padding-left: 0;">follow us</h4>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -258,7 +181,6 @@
                 </div>
             </div>
         </div>
-   </footer>
-
+    </footer> 
 </body>
 </html>

@@ -53,7 +53,7 @@ document.querySelector('#btn').addEventListener('click', () => {
   let totalItems = document.getElementById('totalItems').value
 
   let Sneakers = {
-    name: 'Fall Limited Edition Sneakers',
+    name: 'Fall Limited Edition ',
     value: 125.00,
     amount: totalItems,
     src: './images/image-product-1-thumbnail.jpg',

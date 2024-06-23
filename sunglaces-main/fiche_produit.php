@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -13,30 +13,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
         integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="stylesproduct.css">
-     <script src="fich.js" defer></script> 
-     <style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-PLT9vEEwbABK8Lpln8L+L8b/vfzXsI5e2+OKl7K2WyErKNyI9AvH2XZxICn3cOtvqMe5URgV6aZxpt1g9wshjw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="fich.js" defer></script>
+    <style>
         <?php
         // Connexion à la base de données
-        $con = mysqli_connect("localhost", "root", "", "optitrend");
-        if (!$con) {
-            die("Connection failed: " . mysqli_connect_error());
+        $con = new mysqli("localhost", "root", "", "optitrend");
+        if ($con->connect_error) {
+            die("Connection failed: " . $con->connect_error);
         }
 
         // Récupérer la catégorie des produits à afficher
         $cat = isset($_GET['category']) ? (int)$_GET['category'] : 0;
 
         // Requête pour récupérer les produits de la catégorie
-        $req = mysqli_query($con, "SELECT product_id, name, price FROM products WHERE category_id=$cat");
+        $req = $con->query("SELECT product_id, name, price FROM products WHERE category_id=1");
 
-        while ($res = mysqli_fetch_array($req)) {
+        while ($res = $req->fetch_assoc()) {
             $product_id = $res['product_id'];
-            $req1 = mysqli_query($con, "SELECT path_image FROM product_images WHERE product_id='$product_id'");
+            $req1 = $con->query("SELECT path_image FROM product_images WHERE product_id='$product_id'");
             $images = [];
-            while ($res1 = mysqli_fetch_array($req1)) {
+            while ($res1 = $req1->fetch_assoc()) {
                 $images[] = $res1['path_image'];
             }
 
@@ -53,7 +58,7 @@
             }
         }
 
-        mysqli_close($con);
+        $con->close();
         ?>
     </style>
 </head>
@@ -142,19 +147,19 @@
 
                     <li class="dropdown__item">
                         <div class="cartDiv empty" id="cartDiv" style="margin-top: 33px; margin-right: 20px;">
-                            <img src="icon-cart.svg" class="icon" id="cartIcon"><div class="cart-box hide" id="cart-box">
-                            <div class="heading">
-                              <span>Cart</span>
+                            <img src="icon-cart.svg" class="icon" id="cartIcon">
+                            <div class="cart-box hide" id="cart-box">
+                                <div class="heading">
+                                    <span>Cart</span>
+                                </div>
+                                <div class="products" id="products">
+                                </div>
+                                <div class="checkout" id="checkout">
+                                    <a href="panier.html"> <button>Checkout</button></a>
+                                </div>
                             </div>
-                            <div class="products" id="products">
-                            </div>
-                            <div class="checkout" id="checkout">
-                             <a href="panier.html"> <button>Checkout</button></a>
-                            </div>
-                          </div>
+                        </div>
                     </li>
-                          </div>
-                          
                 </ul>
             </div>
         </nav>
@@ -165,17 +170,17 @@
             <?php 
             if(isset($_POST["ok"])) {
                 $idp = $_POST["idp"];
-                $con = mysqli_connect("localhost", "root", "", "optitrend");
+                $con = new mysqli("localhost", "root", "", "optitrend");
 
-                if (!$con) {
-                    die("Connection failed: " . mysqli_connect_error());
+                if ($con->connect_error) {
+                    die("Connection failed: " . $con->connect_error);
                 }
 
-                $req = mysqli_query($con, "SELECT * FROM products WHERE product_id='$idp'");
-                $req1 = mysqli_query($con, "SELECT path_image FROM product_images WHERE product_id='$idp'");
+                $req = $con->query("SELECT * FROM products WHERE product_id='$idp'");
+                $req1 = $con->query("SELECT path_image FROM product_images WHERE product_id='$idp'");
 
                 $images = array();
-                while ($res1 = mysqli_fetch_array($req1)) {
+                while ($res1 = $req1->fetch_assoc()) {
                     $images[] = $res1['path_image'];
                 }
 
@@ -202,12 +207,13 @@
 
                 echo '<div class="col-2">';
                 echo '<form action="panier.php" method="POST">';
-                while ($res = mysqli_fetch_array($req)) {
+                while ($res = $req->fetch_assoc()) {
                     echo '<small class="companyName">'. $res['name'] .'</small>';
                     echo '<h2>Fall Limited Edition Sunglasses</h2>';
                     echo '<p>' . $res['description'] . '</p>';
                     echo '<div class="price"><span class="productValue">' . $res['price'] . '</span></div>';
                     $style = $res['style']; // Get the style for similar products
+                    $CATEGORY = $res['category_id']; // Get the CATEGO for similar products
                 }
                 echo' <div class="buttonsRow">
                     <div class="increment">
@@ -216,7 +222,7 @@
                         <img src="icon-plus.png" id="plus">
                     </div>
                     <div class="callToAction">
-                        <button id="btn"><i class="fa-solid fa-cart-shopping"></i> Add to cart</button>
+                        <button id="btn" type="button">Add to Cart</button>
                     </div>
                 </div>
                 <input type="hidden" name="idp" value="' . $idp . '">
@@ -228,13 +234,13 @@
     </div>
 
     <section class="bests-items" id="bests-items">
-        <h2 class="section-title style='font_size=80rem;'">Similaire Produits</h2>
+        <h2 class="section-title" style="font-size: 2rem;">Similaire Produits</h2>
         <div class="best-plants style-grid">
             <?php
             if (isset($style)) {
-                $req2 = mysqli_query($con, "SELECT product_id, name, price FROM products WHERE style='$style' AND product_id != '$idp'");
+                $req2 = $con->query("SELECT product_id, name, price FROM products WHERE style='$style' AND category_id='$CATEGORY'");
 
-                while ($res2 = mysqli_fetch_array($req2)) {
+                while ($res2 = $req2->fetch_assoc()) {
                     echo '<a href="fiche_produit.php" class="style-box style' . $res2['product_id'] . '">';
                     echo '<div class="style-details">';
                     echo '<p class="style-name">' . $res2['name'] . '</p>';
@@ -248,66 +254,63 @@
                 }
             }
 
-            mysqli_close($con);
+            $con->close();
             ?>
         </div>
     </section>
-            <footer class="footer">
-                <div class="container">
-                    <div class="row3">
-                        <div class="footer-col">
-                        <h4 style="text-align: left; padding-left: 0; font-size: 5rem; margin-left: 2px;">OptiTrend</h4> 
-                            <ul>
-                            </ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4 style="text-align: left; padding-left: 0;">company</h4>
-                            <ul>
-                                <li><a href="#">about us</a></li>
-                                <li><a href="#">privacy policy</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4 style="text-align: left; padding-left: 0;">get help</h4>
-                            <ul>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">shipping</a></li>
-                                <li><a href="#">returns</a></li>
-                                <li><a href="#">payment options</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4 style="text-align: left; padding-left: 0;">online shop</h4>
-                            <ul>
-                                <li><a href="#">Sunglasses</a></li>
-                                <li><a href="#">optic</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4 style="text-align: left; padding-left: 0;">contact us</h4>
-                            <ul>
-                                <li><a href="#">hajrbouhali07@gmail.com</a></li>
-                                <li><a href="#">0684912299</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col">
-                            <h4   style="text-align: left; padding-left: 0;">follow us</h4>
-                            <div class="social-links">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row3">
+                <div class="footer-col">
+                    <h4 style="text-align: left; padding-left: 0; font-size: 5rem; margin-left: 2px;">OptiTrend</h4>
+                    <ul></ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="text-align: left; padding-left: 0;">company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="text-align: left; padding-left: 0;">get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">shipping</a></li>
+                        <li><a href="#">returns</a></li>
+                        <li><a href="#">payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="text-align: left; padding-left: 0;">online shop</h4>
+                    <ul>
+                        <li><a href="#">Sunglasses</a></li>
+                        <li><a href="#">optic</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="text-align: left; padding-left: 0;">contact us</h4>
+                    <ul>
+                        <li><a href="#">hajrbouhali07@gmail.com</a></li>
+                        <li><a href="#">0684912299</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 style="text-align: left; padding-left: 0;">follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
-           </footer> -->
+            </div>
+        </div>
+    </footer>
 
-            
-           <script>
-  
- 
-        </script>
+    <script>
+        // Ajoutez votre JavaScript ici
+    </script>
 </body>
 
 </html>
