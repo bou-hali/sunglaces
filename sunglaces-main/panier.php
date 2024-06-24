@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_POST[''])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifie si le formulaire a été soumis avec succès
     $id = $_POST['idp'];
     $qte = $_POST['totalItems'];
@@ -23,9 +23,8 @@ if (isset($_POST[''])) {
         }
     } else {
         // Initialise le panier avec le premier produit
-        $_SESSION["cart"][] = array('id' => $id, 'quantity' => $qte);
+        $_SESSION["cart"] = array(array('id' => $id, 'quantity' => $qte));
     }
-
-    
 }
+
 ?>

@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"
-        integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="stylesproduct.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-        integrity="sha512-PLT9vEEwbABK8Lpln8L+L8b/vfzXsI5e2+OKl7K2WyErKNyI9AvH2XZxICn3cOtvqMe5URgV6aZxpt1g9wshjw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-PLT9vEEwbABK8Lpln8L+L8b/vfzXsI5e2+OKl7K2WyErKNyI9AvH2XZxICn3cOtvqMe5URgV6aZxpt1g9wshjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="fich.js" defer></script>
     <style>
         <?php
@@ -47,7 +39,7 @@
 
             // Générer le CSS pour chaque produit avec ses images
             if (count($images) > 0) {
-                echo ".style$product_id { background-image: url( $images[0] ); margin-bottom: 2rem; }\n";
+                echo ".style$product_id { background-image: url($images[0]); margin-bottom: 2rem; }\n";
                 echo "@keyframes changeBackground$product_id {";
                 foreach ($images as $index => $image) {
                     $percent = ($index / count($images)) * 100;
@@ -62,7 +54,6 @@
         ?>
     </style>
 </head>
-
 <body>
     <header class="header">
         <nav class="nav container">
@@ -85,9 +76,7 @@
                                     <div class="dropdown__icon">
                                         <i class="ri-shape-2-line"></i>
                                     </div>
-
                                     <span class="dropdown__title">styles</span>
-
                                     <ul class="dropdown__list">
                                         <li>
                                             <a href="#" class="dropdown__link">ronde</a>
@@ -100,14 +89,11 @@
                                         </li>
                                     </ul>
                                 </div>
-
                                 <div class="dropdown__group">
                                     <div class="dropdown__icon">
                                         <i class="ri-palette-line"></i>
                                     </div>
-
                                     <span class="dropdown__title">color</span>
-
                                     <ul class="dropdown__list">
                                         <li>
                                             <a href="#" class="dropdown__link">noir</a>
@@ -116,21 +102,18 @@
                                             <a href="#" class="dropdown__link">marron</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="dropdown__link">blanc </a>
+                                            <a href="#" class="dropdown__link">blanc</a>
                                         </li>
                                     </ul>
                                 </div>
-
                                 <div class="dropdown__group">
                                     <div class="dropdown__icon">
                                         <i class="ri-user-3-line"></i>
                                     </div>
-
                                     <span class="dropdown__title">sex</span>
-
                                     <ul class="dropdown__list">
                                         <li>
-                                            <a href="#" class="dropdown__link">homme </a>
+                                            <a href="#" class="dropdown__link">homme</a>
                                         </li>
                                         <li>
                                             <a href="#" class="dropdown__link">femme</a>
@@ -138,20 +121,16 @@
                                         <li>
                                             <a href="#" class="dropdown__link">enfant</a>
                                         </li>
-
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </li>
-
                     <li class="dropdown__item">
                         <div class="cartDiv empty" id="cartDiv" style="margin-top: 33px; margin-right: 20px;">
-                            <img src="icon-cart.svg" class="icon" id="cartIcon">
-                            <div class="cart-box hide" id="cart-box">
-                               
-                                
-                                
+                           <a href="cart.php"> <img src="icon-cart.svg" class="icon" id="cartIcon"></a>
+                        
+                              
                             </div>
                         </div>
                     </li>
@@ -162,102 +141,99 @@
 
     <div class="container1">
         <div class="row">
-        <?php 
-if(isset($_POST["voir"])) {
-    $idp = $_POST["idp"];
-    $con = new mysqli("localhost", "root", "", "optitrend");
+            <?php 
+            if(isset($_POST["voir"])) {
+                $idp = $_POST["idp"];
+                $con = new mysqli("localhost", "root", "", "optitrend");
 
-    if ($con->connect_error) {
-        die("Connection failed: " . $con->connect_error);
-    }
-
-    $req = $con->query("SELECT * FROM products WHERE product_id='$idp'");
-    $req1 = $con->query("SELECT path_image FROM product_images WHERE product_id='$idp'");
-
-    $images = array();
-    while ($res1 = $req1->fetch_assoc()) {
-        $images[] = $res1['path_image'];
-    }
-
-    echo '<div class="col-2">';
-    if (count($images) > 0) {
-        echo '<img src="' . $images[0] . '" id="emphasisPicture">';
-        echo '<div class="smallImg">';
-        echo '<div class="col-4">
-                <img src="' . $images[0] . '" class="smallpictures active" alt="">
-              </div>';
-        if (isset($images[1])) {
-            echo '<div class="col-4">
-                    <img src="' . $images[1] . '" class="smallpictures" alt="">
-                  </div>';
-        }
-        if (isset($images[2])) {
-            echo '<div class="col-4">
-                    <img src="' . $images[2] . '" class="smallpictures" alt="">
-                  </div>';
-        }
-        echo '</div>';
-    }
-    echo '</div>';
-
-    echo '<div class="col-2">';
-    echo '<form action="panier.php" method="POST">';
-    while ($res = $req->fetch_assoc()) {
-        echo '<small class="companyName">'. $res['name'] .'</small>';
-        echo '<h2>Fall Limited Edition Sunglasses</h2>';
-        echo '<p>' . $res['description'] . '</p>';
-        echo '<div class="price"><span class="productValue">' . $res['price'] . '</span></div>';
-        $style = $res['style']; // Get the style for similar products
-        $CATEGORY = $res['category_id']; // Get the CATEGO for similar products
-    }
-    echo ' <div class="buttonsRow">
-            <div class="increment">
-                <img src="icon-minus.png" id="minus">
-                <input type="number" name="totalItems" id="totalItems" value="1">
-                <img src="icon-plus.png" id="plus">
-            </div>
-            <div class="callToAction">
-                <button id="btn" type="submit" name="ok">Add to Cart</button>
-            </div>
-        </div>
-        <input type="hidden" name="idp" value="' . $idp . '">
-    </form>'; 
-    
-    // Afficher l'alerte JavaScript après avoir ajouté le produit au panier avec succès
-    echo '<script>alert("Le produit a été ajouté au panier avec succès!");</script>';
-
-    echo '</div>';
-}
-?>
-
-    </div>
-  
-
-    <section class="bests-items" id="bests-items">
-        <h2 class="section-title" style="font-size: 2rem;">Similaire Produits</h2>
-        <div class="best-plants style-grid">
-            <?php
-            if (isset($style)) {
-                $req2 = $con->query("SELECT product_id, name, price FROM products WHERE style='$style' AND category_id='$CATEGORY'");
-
-                while ($res2 = $req2->fetch_assoc()) {
-                    echo '<a href="fiche_produit.php" class="style-box style' . $res2['product_id'] . '">';
-                    echo '<div class="style-details">';
-                    echo '<p class="style-name">' . $res2['name'] . '</p>';
-                    echo '<p class="style-price">' . $res2['price'] . '</p>';
-                    echo '<form action="fiche_produit.php" method="POST">';
-                    echo '<input type="submit" name="add" value="voir">';
-                    echo '<input type="hidden" name="idp" value="' . $res2['product_id'] . '">';
-                    echo '</form>';
-                    echo '</div>';
-                    echo '</a>';
+                if ($con->connect_error) {
+                    die("Connection failed: " . $con->connect_error);
                 }
-            }
 
-            $con->close();
+                $req = $con->query("SELECT * FROM products WHERE product_id='$idp'");
+                $req1 = $con->query("SELECT path_image FROM product_images WHERE product_id='$idp'");
+
+                $images = array();
+                while ($res1 = $req1->fetch_assoc()) {
+                    $images[] = $res1['path_image'];
+                }
+                
+
+                echo '<div class="col-2">';
+                if (count($images) > 0) {
+                    echo '<img src="' . $images[0] . '" id="emphasisPicture">';
+                    echo '<div class="smallImg">';
+                    echo '<div class="col-4">
+                            <img src="' . $images[0] . '" class="smallpictures active" alt="">
+                          </div>';
+                    if (isset($images[1])) {
+                        echo '<div class="col-4">
+                                <img src="' . $images[1] . '" class="smallpictures" alt="">
+                              </div>';
+                    }
+                    if (isset($images[2])) {
+                        echo '<div class="col-4">
+                                <img src="' . $images[2] . '" class="smallpictures" alt="">
+                              </div>';
+                    }
+                    echo '</div>';
+                }
+                echo '</div>';
+
+                echo '<div class="col-2">';
+                echo '<form action="panier.php" method="POST">';
+                while ($res = $req->fetch_assoc()) {
+                    echo '<small class="companyName">'. $res['name'] .'</small>';
+                    echo '<h2>Fall Limited Edition Sunglasses</h2>';
+                    echo '<p>' . $res['description'] . '</p>';
+                    echo '<div class="price"><span class="productValue">' . $res['price'] . '</span></div>';
+                    $style = $res['style']; // Get the style for similar products
+                    $CATEGORY = $res['category_id']; // Get the CATEGO for similar products
+                }
+                echo ' <div class="buttonsRow">
+                        <div class="increment">
+                            <img src="icon-minus.png" id="minus">
+                            <input type="number" name="totalItems" id="totalItems" value="1">
+                            <img src="icon-plus.png" id="plus">
+                        </div>
+                        <div class="callToAction">
+                            <button id="btn" type="submit" name="ok">Add to Cart</button>
+                        </div>
+                    </div>
+                    <input type="hidden" name="idp" value="' . $idp . '">
+                </form>'; 
+                echo '</div>';
+            }
             ?>
         </div>
-    </section>
+
+        <section class="bests-items" id="bests-items">
+            <h2 class="section-title" style="font-size: 2rem;">Similaire Produits</h2>
+            <div class="best-plants style-grid">
+                <?php
+                if (isset($style)) {
+                    $req2 = $con->query("SELECT product_id, name, price FROM products WHERE style='$style' AND category_id='$CATEGORY'");
+
+                    while ($res2 = $req2->fetch_assoc()) {
+                        echo '<a href="fiche_produit.php" class="style-box style' . $res2['product_id'] . '">';
+                        echo '<div class="style-details">';
+                        echo '<p class="style-name">' . $res2['name'] . '</p>';
+                        echo '<p class="style-price">' . $res2['price'] . '</p>';
+                        echo '<form action="fiche_produit.php" method="POST">';
+                        echo '<input type="submit" name="voir" value="voir">';
+                        echo '<input type="hidden" name="idp" value="' . $res2['product_id'] . '">';
+                        echo '</form>';
+                        echo '</div>';
+                        echo '</a>';
+                    }
+                }
+
+                $con->close();
+                ?>
+            </div>
+        </section>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="row3">
@@ -312,5 +288,4 @@ if(isset($_POST["voir"])) {
         // Ajoutez votre JavaScript ici
     </script>
 </body>
-
 </html>
