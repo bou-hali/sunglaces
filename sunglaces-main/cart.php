@@ -34,28 +34,113 @@ $total_quantity = 0;
             font-size: 1.5rem; /* Adjust the size if needed */
         }
         .cart-total{
-
             flex: 0.25;
-
             margin-left: 20px;
-
             padding: 20px;
-
             height: 190px;
-
             border: 1px solid silver;
-
             border-radius: 5px;
-
-    }
-    .cart{
-
-        display: flex;
-        margin-top: 5rem;
-        height:50rem;
-
-    }
+        }
+        .cart{
+            display: flex;
+            margin-top: 5rem;
+            height:50rem;
+        }
+        .form-container {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+        .form-content {
+            background: white;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-content h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .form-content label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-content input,
+        .form-content textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-content input:focus,
+        .form-content textarea:focus {
+            border-color: #6A64F1;
+            outline: none;
+        }
+        .form-content button {
+            display: block;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            background-color: tomato;
+            color: white;
+            text-decoration: none;
+            padding: 0 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .form-content button:hover {
+            background-color: #5753e3;
+        }
+        .checkout-button {
+            display: block;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            background-color: tomato;
+            color: white;
+            text-decoration: none;
+            padding: 0 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .checkout-button:hover {
+            background-color: #5753e3;
+        }
     </style>
+    <script>
+        function showForm() {
+            document.getElementById("checkoutForm").style.display = "block";
+        }
+        function hideForm() {
+            document.getElementById("checkoutForm").style.display = "none";
+        }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -119,7 +204,8 @@ $total_quantity = 0;
                                 <div class="products" id="products"></div>
                                 <div class="checkout" id="checkout">
                                     <a href="panier.html"><button>Checkout</button></a>
-                                </div>
+                               
+                                    </div>
                             </div>
                         </div>
                     </li>
@@ -127,6 +213,7 @@ $total_quantity = 0;
             </div>
         </nav>
     </header>
+
     <div class="container5">
         <h1>Shopping Cart</h1>
         <div class="cart">
@@ -137,17 +224,23 @@ $total_quantity = 0;
                         $id = $item['id'];
                         $qtee = $item['quantity'];
 
-                        // Préparez la requête pour éviter les injections SQL
+                        // Prepare the query to avoid SQL injection
                         $stmt = $con->prepare("SELECT * FROM products WHERE product_id = ?");
+                        if (!$stmt) {
+                            die('Query preparation failed: ' . $con->error);
+                        }
                         $stmt->bind_param("i", $id);
                         $stmt->execute();
                         $result = $stmt->get_result();
                         $res = $result->fetch_assoc();
 
-                        // Vérifiez que $res est défini avant d'accéder à ses éléments
+                        // Check if $res is defined before accessing its elements
                         if ($res) {
-                            // Requête pour récupérer les images du produit
+                            // Query to retrieve product images
                             $stmt_img = $con->prepare("SELECT path_image FROM product_images WHERE product_id = ?");
+                            if (!$stmt_img) {
+                                die('Image query preparation failed: ' . $con->error);
+                            }
                             $stmt_img->bind_param("i", $id);
                             $stmt_img->execute();
                             $result_img = $stmt_img->get_result();
@@ -157,9 +250,12 @@ $total_quantity = 0;
                                 $images[] = $res1['path_image'];
                             }
 
-                            // Calculer le prix total et la quantité totale
+                            // Calculate total price and total quantity
                             $total_price += $res['price'] * $qtee;
                             $total_quantity += $qtee;
+                            
+                            $_SESSION['total_price']=$total_price;
+                            $_SESSION['price']= $res['price'];
 
                             echo '<div class="product5">';
                             if (count($images) > 0) {
@@ -180,11 +276,13 @@ $total_quantity = 0;
                             echo '</div>';
 
                             $stmt_img->close();
+                        } else {
+                            echo '<p>Product not found.</p>';
                         }
                         $stmt->close();
                     }
                 } else {
-                    echo '<p>Votre panier est vide.</p>';
+                    echo '<p>Your cart is empty.</p>';
                 }
                 $con->close();
                 ?>
@@ -198,10 +296,26 @@ $total_quantity = 0;
                     <span>Number of Items</span>
                     <span><?php echo htmlspecialchars($total_quantity); ?></span>
                 </p>
-                <a href="#">Proceed to Checkout</a>
+                <a href="#" class="checkout-button" onclick="showForm()">Proceed to Checkout</a>
             </div>
         </div>
     </div>
+
+    <div class="form-container" id="checkoutForm">
+        <div class="form-content">
+            <h2>Checkout</h2>
+            <form action="proces.php" method="POST">
+    <input type="text" name="first_name" placeholder="First Name" required>
+    <input type="text" name="last_name" placeholder="Last Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="phone" placeholder="Phone" required>
+    <input type="text" name="address" placeholder="Address" required>
+    <button type="submit" name="submit_order">Submit Order</button>
+</form>
+
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="row3">
@@ -251,5 +365,6 @@ $total_quantity = 0;
             </div>
         </div>
     </footer>
+
 </body>
 </html>
